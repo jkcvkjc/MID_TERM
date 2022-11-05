@@ -1,0 +1,21 @@
+/*
+ * global.h
+ *
+ *  Created on: Nov 4, 2022
+ *      Author: ACER
+ */
+
+#ifndef INC_GLOBAL_H_
+#define INC_GLOBAL_H_
+
+
+#define NORMAL_PRESS 1
+#define RESET_PRESS 2
+#define INC_PRESS 3
+#define DEC_PRESS 4
+
+extern int status_press;
+extern int status;
+extern int counter;
+
+#endif /* INC_GLOBAL_H_ */

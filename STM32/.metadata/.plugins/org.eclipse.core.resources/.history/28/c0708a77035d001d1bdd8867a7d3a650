@@ -1,0 +1,17 @@
+/*
+ * fsm_automatic.h
+ *
+ *  Created on: Nov 5, 2022
+ *      Author: ACER
+ */
+
+#ifndef INC_FSM_AUTOMATIC_H_
+#define INC_FSM_AUTOMATIC_H_
+
+#include "normalPress.h"
+#include "global.h"
+#include "display7Segment.h"
+
+void fsm_automatic_run();
+
+#endif /* INC_FSM_AUTOMATIC_H_ */

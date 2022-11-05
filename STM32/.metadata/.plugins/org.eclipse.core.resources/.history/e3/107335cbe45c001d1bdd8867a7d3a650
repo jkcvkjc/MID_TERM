@@ -1,0 +1,64 @@
+/*
+ * normalPress.c
+ *
+ *  Created on: Nov 5, 2022
+ *      Author: ACER
+ */
+
+#include "normalPress.h"
+
+
+void fsm_simple_buttons_run(){
+	switch(status_press){
+	case NORMAL_PRESS:
+		display7Segment(counter);
+		if(button_flag[0]==1){
+			button_flag[0]=0;
+			status_press=RESET_PRESS;
+			setTimer1(1000);
+		}
+		if(button_flag[1]==1){
+			button_flag[1]=0;
+			status_press=INC_PRESS;
+			setTimer1(1000);
+		}
+		if(button_flag[2]==1){
+			button_flag[2]=0;
+			status_press=DEC_PRESS;
+			setTimer1(1000);
+		}
+		break;
+	case RESET_PRESS:
+		counter=0;
+		display7Segment(counter);
+		if(button_flag[0]==0){
+			status_press=NORMAL_PRESS;
+			setTimer1(1000);
+		}
+		break;
+	case INC_PRESS:
+		counter++;
+		if(counter>=10) counter=0;
+		display7Segment(counter);
+		if(button_flag_press_1s[1]==1){
+			status_press=INC_PRESS;
+			setTimer1(1000);
+		}
+		if(button_flag[1]==0){
+			status_press=NORMAL_PRESS;
+			setTimer1(1000);
+		}
+		break;
+	case DEC_PRESS:
+		counter--;
+		if(counter<0) counter=9;
+		display7Segment(counter);
+		if(button_flag[2]==0){
+			status_press=NORMAL_PRESS;
+			setTimer1(1000);
+		}
+		break;
+	default:
+		break;
+	}
+}

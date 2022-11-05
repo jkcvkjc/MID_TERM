@@ -1,0 +1,57 @@
+/*
+ * fsm_automatic.c
+ *
+ *  Created on: Nov 5, 2022
+ *      Author: ACER
+ */
+
+#include "fsm_automatic.h"
+
+void fsm_automatic_run(){
+	switch(status){
+	case INIT:
+		if(button_flag[0]==1||button_flag[1]==1||button_flag[2]==1||button_flag_press_3s[1]==1||button_flag_press_3s[2]==1){
+			status=PRESS;
+			setTimer2(1000);
+		}
+		break;
+	case PRESS:
+		if(timer2_flag==1){
+			setTimer2(1000);
+			status_press=NORMAL_PRESS;
+			fsm_simple_buttons_run();
+		}
+		break;
+	/*case INIT:
+		if(button_flag[0]==1||button_flag[1]==1||button_flag[2]==1||button_flag_press_3s[1]==1||button_flag_press_3s[2]==1){
+			status=PRESS;
+			setTimer3(1000);
+		}
+		setTimer3(10000);
+		if(timer3_flag==1){
+			setTimer3(1000);
+			status=NO_PRESS;
+		}
+		break;
+	case PRESS:
+		if(timer3_flag==1){
+			setTimer3(1000);
+		fsm_simple_buttons_run();}
+		if(button_flag[0]==0&&button_flag[1]==0&&button_flag[2]==0&&button_flag_press_3s[1]==0&&button_flag_press_3s[2]==0)
+			status=INIT;
+		break;
+	case NO_PRESS:
+		if(timer3_flag==1){
+			setTimer3(1000);
+			counter--;
+			if(counter<=0) counter=0;
+			display7Segment(counter);
+		}
+		if(button_flag[0]==1||button_flag[1]==1||button_flag[2]==1||button_flag_press_3s[1]==1||button_flag_press_3s[2]==1){
+			status=PRESS;
+		}
+		break;*/
+	default:
+		break;
+	}
+}

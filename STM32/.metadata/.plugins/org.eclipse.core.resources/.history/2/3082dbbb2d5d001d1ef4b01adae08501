@@ -1,0 +1,9 @@
+/*
+ * global.c
+ *
+ *  Created on: Nov 4, 2022
+ *      Author: ACER
+ */
+
+int counter=0;
+int status_press=0;
